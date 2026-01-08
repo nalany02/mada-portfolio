@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
+    "section": "",
+    "text": "Welcome to my MADA portfolio site. I’ll post weekly exercises and project updates here."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Hi everyone, my name is Alexandra (Alex) Tejada-Strop, and I’m a DrPH student in Health Policy and Management. I have a background in public health and laboratory science and have used R for basic data cleaning, analysis, and visualization. I’m comfortable with statistics conceptually, but I’m still developing my applied modeling skills. My experience with Git and GitHub is limited, so I’m looking forward to getting more practice with reproducible workflows.\nIn this course, I hope to strengthen my skills in reproducible data analysis, model evaluation, and using tools like Quarto and tidymodels. I’m interested in applying what we learn to real-world public health or surveillance data, potentially aligned with my dissertation or professional work."
+  }
+]
