@@ -232,5 +232,3 @@ summary(fit2)
 
 
 
-
-
