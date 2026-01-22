@@ -7,16 +7,12 @@ execute:
   warning: true
   message: true
 ---
+
 ## Overview
 
 This document completes Part 1 of the starter analysis exercise for MADA.
 
-I will:
-- load the `dslabs` package (which contains the `gapminder` dataset),
-- inspect the dataset with `str()`, `summary()`, and `class()`,
-- subset the data to Africa only,
-- create two small 2-column datasets for plotting,
-- and make two scatter plots.
+I will: - load the `dslabs` package (which contains the `gapminder` dataset), - inspect the dataset with `str()`, `summary()`, and `class()`, - subset the data to Africa only, - create two small 2-column datasets for plotting, - and make two scatter plots.
 
 ```{r}
 # =========================
@@ -59,7 +55,6 @@ summary(africadata)
 nrow(africadata)
 
 ```
-
 
 ```{r}
 library(dslabs)
@@ -123,13 +118,9 @@ ggplot(africa_pop_life, aes(x = population, y = life_expectancy)) +
 
 ### Interpreting the plots
 
-The plot of infant mortality versus life expectancy shows a clear negative relationship:
-countries with higher infant mortality tend to have lower life expectancy.
+The plot of infant mortality versus life expectancy shows a clear negative relationship: countries with higher infant mortality tend to have lower life expectancy.
 
-In the population plot, we see visible streaks of points. These streaks occur because
-each country appears multiple times in the dataset, once for each year. As time passes,
-many countries experience increasing population and increasing life expectancy, which
-creates trajectories across the plot.
+In the population plot, we see visible streaks of points. These streaks occur because each country appears multiple times in the dataset, once for each year. As time passes, many countries experience increasing population and increasing life expectancy, which creates trajectories across the plot.
 
 ```{r}
 # =========================
@@ -230,5 +221,56 @@ fit2 <- lm(life_expectancy ~ population, data = africa2000)
 summary(fit2)
 ```
 
+# Addition made by Marco Reina
 
+```{r}
 
+#Loading libraries and 
+
+library(dslabs)
+library(ggplot2)
+
+#summary of us_contagious_diseases dataset
+str(us_contagious_diseases)
+summary(us_contagious_diseases)
+```
+
+```{r}
+#turning the data set into a dataframe to explore the information
+
+us_contagious_diseases_df <- data.frame(us_contagious_diseases)
+
+#US contagious diseases plot to explore information visually
+
+all_diseases_plot <- ggplot(us_contagious_diseases_df, aes(y= count, x = year)) +
+  geom_col() +
+  facet_wrap(~disease,
+  scales = "free")
+all_diseases_plot
+```
+
+```{r}
+#Selecting Hep A because Alexandra works in a Hepatitis lab at the CDC! So I hope this is a good dataset for you :)
+
+HepA_df <- subset(us_contagious_diseases_df, disease %in% "Hepatitis A")
+
+#Subsetting the dataset for the "southeast", even though some people might include other states like Kentucky and the Virginias, I tried to keep it smaller to compare the counts of Hep A in those states
+
+Southeast_HepA_df <- subset(HepA_df, state %in% c("Alabama", "Arkansas", "Florida", "Georgia", "Louisiana", "Mississipi", "North Carolina", "South Carolina", "Tennessee"))
+
+#Plotting Hep A counts across the southeast
+
+Southeast_HepA_plot <- ggplot(Southeast_HepA_df, aes(x = year, y = count)) +
+  geom_line() +
+  facet_wrap(~state)
+
+Southeast_HepA_plot
+```
+
+```{r}
+HepA_fit_lm <- lm(count ~ state, data = Southeast_HepA_df)
+summary(HepA_fit_lm)
+
+#I fit a simple lm to understand if Hep A was different among states 
+#According to the responses I got: Alabama, Arkansas, and South Carolina are similar in their Hep A counts. However, Florida, Tennessee, and Georgia, and North Carolina have big differences, with 173 to 780 more cases than the other states. Which is also what is observed in the plot
+```
