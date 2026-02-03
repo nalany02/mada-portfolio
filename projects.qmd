@@ -2,20 +2,28 @@
 title: "MADA Course Project"
 ---
 
-## Project Overview
-This page will document my semester-long data analysis project for the MADA course.
+## Module 3: Ready Exercise
 
-## Status
-Project in planning phase (topic and data exploration underway).
+This section shows selected outputs from my Module 3 ready exercise.
 
-## Tentative Interests
-I am currently interested in exploring questions related to:
+### Figures
 
-- Public health data             
-- Health outcomes and disparities
-- Reproducible data analysis workflows
+![](projects/module3/figures/height-distribution.png){width=85%}
 
-## Next Steps
-- Identify a suitable dataset
-- Refine a research question
-- Set up a project repository using the course template
+![](projects/module3/figures/weight-distribution.png){width=85%}
+
+![](projects/module3/figures/height-weight.png){width=85%}
+
+![](projects/module3/figures/height-weight-stratified.png){width=85%}
+
+![](projects/module3/figures/weight-hours_sleep.png){width=85%}
+
+![](projects/module3/figures/scatter_weight_vs_BMI.png){width=85%}
+
+![](projects/module3/figures/height-eye_color.png){width=85%}
+
+### Data file
+
+The raw dataset used for this exercise is available here:
+
+- `projects/module3/data/exampledata2.xlsx`
