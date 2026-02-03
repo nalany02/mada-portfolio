@@ -1,12 +1,11 @@
 ---
-title: "Prenatal Mental Health Screening and Postpartum Depressive Symptoms"
-author: "Alexandra Tejada-Strop"
-
+title: "Class Project"
+subtitle: "Prenatal Mental Health Screening and Postpartum Depressive Symptoms"
 format:
   html:
     toc: true
-    number-sections: right
-
+    toc-location: right
+    number-sections: true
 ---
 
 This page presents my semester-long class project for **Modern Applied Data Analysis (MADA)**.  
