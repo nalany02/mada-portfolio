@@ -1,0 +1,93 @@
+---
+title: "Prenatal Mental Health Screening and Postpartum Depressive Symptoms"
+author: "Alexandra Tejada-Strop"
+
+format:
+  html:
+    toc: true
+    number-sections: right
+
+---
+
+This page presents my semester-long class project for **Modern Applied Data Analysis (MADA)**.  
+The project uses PRAMS Phase 8 data to examine prenatal mental health screening and postpartum depressive symptoms.
+
+
+This uses [MS Word as output format](https://quarto.org/docs/output-formats/ms-word.html). See [the Quarto documentation](https://quarto.org/) for instructions on how to use other formats.
+
+
+```{r}
+# Load core packages used across the project
+library(here)
+library(knitr)
+
+```
+
+$\dagger$ Disclaimer: The opinions expressed in this article are the
+author's own and don't reflect their employer.
+
+
+
+# Summary/Abstract
+This project examines whether prenatal mental health screening is associated with postpartum depressive symptoms using data from the Pregnancy Risk Assessment Monitoring System (PRAMS) Phase 8. The analysis focuses on self-reported experiences during prenatal care and postpartum mental health outcomes to assess the feasibility of identifying meaningful patterns in population-based surveillance data.
+
+
+# Introduction 
+Postpartum depression is a common and serious public health concern that affects maternal well-being, family functioning, and infant outcomes. Clinical guidelines increasingly recommend routine screening for depression and anxiety during prenatal care; however, the extent to which such screening is associated with postpartum mental health outcomes in real-world settings remains unclear.
+
+Using data from the Pregnancy Risk Assessment Monitoring System (PRAMS) Phase 8, this study examines whether individuals who report being asked about depression or anxiety during prenatal care are less likely to report postpartum depressive symptoms. By leveraging a large, population-based dataset, this project aims to explore whether prenatal screening practices may be associated with improved postpartum mental health outcomes.
+
+
+## General Background Information
+Prenatal and postpartum mental health conditions are increasingly recognized as critical components of maternal health, with implications for both maternal and infant outcomes. Understanding whether routine prenatal screening translates into improved postpartum mental health can inform clinical practice and policy.
+
+
+## Description of data and data source
+The data for this study come from the Pregnancy Risk Assessment Monitoring System (PRAMS) Phase 8, a population-based surveillance system conducted by the Centers for Disease Control and Prevention in collaboration with state health departments. PRAMS collects self-reported survey data from individuals who recently had a live birth and links these responses to selected birth certificate variables.
+
+PRAMS Phase 8 includes several hundred variables capturing maternal demographics, pre-pregnancy health conditions, prenatal care experiences, health behaviors, insurance coverage, mental health indicators, and postpartum outcomes. The dataset contains a mix of categorical and numeric variables and reflects real-world survey complexity, including skip patterns and missing data.
+
+Across participating states, PRAMS Phase 8 includes tens of thousands of respondents, providing sufficient sample size and variable richness to support exploratory analysis, multivariable modeling, and predictive approaches covered later in the course.
+
+For this project, variables related to prenatal mental health screening, pre-pregnancy mental health history, postpartum depressive symptoms, and sociodemographic characteristics will be used. Variable definitions and coding schemes are documented in the PRAMS Phase 8 codebook.
+
+## Questions/Hypotheses to be addressed
+The primary research question for this study is:
+
+Are individuals who report being asked about depression or anxiety during prenatal care less likely to report postpartum depressive symptoms?
+
+The primary outcome of interest is self-reported postpartum depressive symptoms, measured using PRAMS survey items assessing feelings of depression and loss of interest since birth. The primary predictors of interest include indicators of prenatal mental health screening, such as whether a healthcare provider asked about depression or anxiety during prenatal visits.
+
+Additional covariates will include pre-pregnancy mental health history, insurance coverage, income, education, maternal age, and race or ethnicity.
+
+
+# Methods 
+
+## Use of Computational Assistance
+Generative artificial intelligence tools (ChatGPT, OpenAI) were used to assist with code troubleshooting. All code and analytical decisions were reviewed, modified as needed, and implemented by the author. The author takes full responsibility for the accuracy, interpretation, and reproducibility of all analyses and results.
+
+## Planned Analysis Approach
+
+At this stage of the project, the analysis plan includes descriptive summaries of key variables and exploratory comparisons between individuals who did and did not report prenatal mental health screening. These exploratory analyses will be used to assess data quality, missingness, and preliminary patterns in the data.
+
+Later stages of the project will involve regression-based and machine learning approaches covered in the course to model associations between prenatal screening and postpartum mental health outcomes while accounting for relevant covariates. The richness of PRAMS survey content and linked birth data makes this analysis feasible within the scope of a semester-long project.
+
+
+## Methods (Planned)
+
+This section will be expanded in later project stages. It will describe data acquisition procedures, data cleaning and processing steps, variable construction, and statistical modeling approaches. Detailed data cleaning and exploratory analyses will be documented in separate Quarto or R scripts within the project repository and summarized here as appropriate.
+
+
+
+## Results (Planned)
+
+Results sections will be developed after data cleaning and exploratory analysis are completed. Descriptive summaries, tables, and figures will be presented to characterize the study population and explore relationships between prenatal screening and postpartum depressive symptoms.
+
+
+## Discussion (Planned)
+
+The discussion section will interpret findings in the context of existing literature, address strengths and limitations of the analysis, and consider implications for prenatal care practices and maternal mental health policy.
+
+## References
+
+References will be added in later stages of the project using a BibTeX file and cited throughout the manuscript.
