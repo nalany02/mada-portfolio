@@ -3,7 +3,8 @@ project:
   output-dir: docs
   render:
     - "*.qmd"
-    - "!alextejadastrop-ready-exercise/**"
+    - "!alextejadastrop-ready-exercise/products/**"
+
 
 website:
   title: "MADA Portfolio"
