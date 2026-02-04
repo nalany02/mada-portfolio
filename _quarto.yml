@@ -17,8 +17,8 @@ website:
         text: MADA Group Projects
       - href: class-project/index.qmd
         text: Class Individual Project
-      - href: reflections.qmd
-        text: Weekly Reflections
+      - href: data-exercise/data-exercise.qmd
+        text: Data Exercise (Synthetic)
       - href: starter-analysis-exercise.qmd
         text: Starter Analysis Exercise
       - href: contacts.qmd

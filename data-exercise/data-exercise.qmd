@@ -1,0 +1,121 @@
+---
+title: "Data Exercise: Synthetic Data"
+format:
+  html:
+    toc: true
+    number-sections: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+## Overview
+
+In this exercise, I generate a synthetic dataset with multiple variables and built in relationships between them.  
+Then I explore the data using summaries and plots, and fit simple models to confirm the models recover the relationships I designed.
+
+## Generate synthetic data
+Variables:
+- Age (years)
+- Activity (hours per week)
+- diet_score (0 to 100)
+- bmi (continuous outcome)
+- high_bp (binary outcome: 0 or 1)
+
+
+## Packages
+
+```{r}
+library(tidyverse)
+
+set.seed(123)
+
+n <- 800
+
+synthetic <- tibble(
+  age = round(rnorm(n, mean = 45, sd = 12)),
+  activity = pmax(0, rnorm(n, mean = 3.5, sd = 2)),
+  diet_score = pmin(100, pmax(0, rnorm(n, mean = 60, sd = 15)))
+) |>
+  mutate(
+    bmi = 27 +
+      0.08 * (age - 45) +
+      -0.6 * activity +
+      -0.04 * (diet_score - 60) +
+      rnorm(n, mean = 0, sd = 2.5)
+  ) |>
+  mutate(
+    lp = -6 +
+      0.05 * age +
+      0.10 * (bmi - 27) +
+      -0.12 * activity +
+      -0.01 * (diet_score - 60),
+    prob_high_bp = plogis(lp),
+    high_bp = rbinom(n, size = 1, prob = prob_high_bp)
+  ) |>
+  select(-lp)
+
+glimpse(synthetic)
+summary(synthetic)
+
+## Step 2: Exploratory analysis- Distribution
+
+synthetic |>
+  select(age, activity, diet_score, bmi) |>
+  pivot_longer(everything()) |>
+  ggplot(aes(x = value)) +
+  geom_histogram(bins = 30) +
+  facet_wrap(~name, scales = "free") +
+  labs(title = "Distributions of continuous variables")
+
+ggplot(synthetic, aes(x = activity, y = bmi)) +
+  geom_point(alpha = 0.4) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "BMI vs Activity", x = "Activity (hours per week)", y = "BMI")
+
+## BMI relationship
+
+ggplot(synthetic, aes(x = diet_score, y = bmi)) +
+  geom_point(alpha = 0.4) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "BMI vs Diet score", x = "Diet score", y = "BMI")
+
+synthetic |>
+  count(high_bp) |>
+  mutate(percent = n / sum(n))
+
+## High blood pressure summary
+
+ggplot(synthetic, aes(x = factor(high_bp))) +
+  geom_bar() +
+  labs(title = "Counts of high blood pressure", x = "High BP (0 or 1)", y = "Count")
+
+## Compare BMI by blood pressure status
+
+ggplot(synthetic, aes(x = factor(high_bp), y = bmi)) +
+  geom_boxplot() +
+  labs(title = "BMI by high blood pressure status", x = "High BP (0 or 1)", y = "BMI")
+
+## Model 1: Linear regression for BMI
+m_bmi <- lm(bmi ~ age + activity + diet_score, data = synthetic)
+summary(m_bmi)
+
+## Model 2: Logistic regresstion for high blood pressure
+m_bp <- glm(high_bp ~ age + bmi + activity + diet_score,
+            data = synthetic,
+            family = binomial())
+
+summary(m_bp)
+
+## Predicted probabilities
+synthetic |>
+  mutate(pred_prob = predict(m_bp, type = "response")) |>
+  ggplot(aes(x = bmi, y = pred_prob)) +
+  geom_point(alpha = 0.3) +
+  geom_smooth(se = FALSE) +
+  labs(title = "Predicted probability of high BP vs BMI",
+       x = "BMI", y = "Predicted probability")
+
+```
+
+
